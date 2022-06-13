@@ -1,26 +1,11 @@
 pipeline {
-    agent { label "linux" }
-    tools {
-        maven "MAVEN_HOME"
-        jdk "JAVA_HOME"
-    }
+    agent { label 'linux' }
+}
 
-    stages {
-        stage('Check-In') {
-            steps {
-                git 'https://github.com/daticahealth/java-war-deploy-example.git'
-            }
-        }
-        stage('Initialize') {
-            steps {
-                echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /usr/share/maven"
-            }
-        }
-        stage("Build Automation") {
-            steps {
-                sh 'mvn clean install package'
-            }
+stages {
+    stage('Checkout') {
+        steps {
+            git 'https://github.com/AshantaP/java-war-deploy-example.git'
         }
     }
 }
