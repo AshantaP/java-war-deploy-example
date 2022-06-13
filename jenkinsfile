@@ -1,15 +1,20 @@
 pipeline {
-    agent { label "linux" } 
+    agent { label "linux" }
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
+    }
 
     stages {
         stage('Check-In') {
             steps {
-                git 'https://github.com/daticahealth/java-war-deploy-example.git'
+                sh 'git 'https://github.com/daticahealth/java-war-deploy-example.git''
             }
         }
-        stage('Docker Version') {
+        stage('Initialize') {
             steps {
-                sh 'docker --version'
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
             }
         }
     }
