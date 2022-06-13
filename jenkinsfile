@@ -19,7 +19,6 @@ pipeline {
         }
         stage("Build Automation") {
             steps {
-                dir("/home/docker/jenkins_home/jenkins_home/workspace/Commercial-Product/development-CICD/commercial-dev-cicd")
                 sh 'mvn clean install package'
             }
         }
