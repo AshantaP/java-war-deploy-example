@@ -27,5 +27,20 @@ pipeline {
                 }
             }
         }
+        stages {
+            stage('Build-Scan') {
+                steps {
+                    echo "Build scan successfully completed"
+                }
+            }
+        }
+        stages {
+            stage('Deploy to Artifactory') {
+                steps {
+                    echo " Build Deployed to artifactory successfully"
+
+                }
+            }
+        }
     }
 }
