@@ -3,14 +3,14 @@ pipeline {
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
-        maven "MAVEN_HOME"
+        maven "M3"
     }
 
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/daticahealth/java-war-deploy-example.git'
+                git 'https://github.com/AshantaP/java-war-deploy-example.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn clean package"
@@ -24,21 +24,6 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     archiveArtifacts 'target/*.jar'
-                }
-            }
-        }
-        stages {
-            stage('Build-Scan') {
-                steps {
-                    echo "Build scan successfully completed"
-                }
-            }
-        }
-        stages {
-            stage('Deploy to Artifactory') {
-                steps {
-                    echo " Build Deployed to artifactory successfully"
-
                 }
             }
         }
