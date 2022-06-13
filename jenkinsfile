@@ -27,5 +27,15 @@ pipeline {
                 }
             }
         }
+        stage('Build-Scan') {
+            steps {
+                echo " Build scan completed "
+            }
+        }
+        stage('Deployment') {
+            steps {
+                echo " Deployment Completed"
+            }
+        }
     }
 }
