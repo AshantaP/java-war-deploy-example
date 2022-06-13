@@ -1,0 +1,16 @@
+pipeline {
+    agent { label "linux" } 
+
+    stages {
+        stage('Check-In') {
+            steps {
+                git 'https://github.com/daticahealth/java-war-deploy-example.git'
+            }
+        }
+        stage('Docker Version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+    }
+}
